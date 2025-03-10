@@ -1,0 +1,16 @@
+$neon-blue: #4dabf5;
+$neon-glow: #00c3ff;
+$shine-color: rgba(255, 255, 255, 0.8);
+$font-minecraft: "Minecraft", monospace;
+main {
+  #YourGamerTag {
+    font-size: 24px;
+    font-family: $font-minecraft;
+    padding-top: 40px;
+    position: relative;
+    color: $neon-blue;
+    text-shadow: 0 0 5px rgba($neon-glow, 0.3), 0 0 10px rgba($neon-glow, 0.3),
+      0 0 15px rgba($neon-glow, 0.3), 0 0 20px rgba($neon-glow, 0.3);
+    overflow: hidden;
+  }
+}

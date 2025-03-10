@@ -1,0 +1,51 @@
+main{
+    display: flex;
+    padding-top: 15vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    #Welcome-header{
+        // font: $font-minecraft;
+        font-family: $font-minecraft;
+        padding-top: 35px;
+        font-size: 24px;
+    }
+    #Login-Text{
+        font-family: $font-minecraft;
+        padding-top: 40px;
+        font-size: 14px;
+    }
+    #Login-register-section{
+        display: flex;
+        flex-direction: row;
+        padding-top: 5.5vh !important;
+        gap: 10px;
+    }
+    .SZBX1{
+        height: 8vh;
+    }
+
+    .SZBX2{
+        height: 5vh;
+    }
+    #Social-links-title{
+        font-family: $font-minecraft;
+        font-size: 20px;
+    }
+    .SZBX3{
+        height: 3vh;
+    }
+    .links{
+        font-family: $font-minecraft;
+        text-decoration: underline;
+    }
+    #IG-link{
+        color: #D700D3;
+    }
+    #DC-link{
+        color: #7289DA;
+    }
+    #YT-link{
+        color: #FF0004;
+    }
+}

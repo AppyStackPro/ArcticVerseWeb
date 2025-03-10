@@ -1,0 +1,9 @@
+@font-face {
+  font-family: "Minecraft-font";
+  src: url("/public/fonts/minecraft.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+// Define a global variable for the font
+$font-minecraft: "Minecraft", sans-serif;

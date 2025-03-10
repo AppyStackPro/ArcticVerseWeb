@@ -1,0 +1,48 @@
+// SaveButton.module.scss
+.saveButton {
+  background-color: #00c800 !important; // Bright green color
+  border-radius: 4px !important;
+  padding: 8px 16px !important;
+  min-width: 90px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  text-transform: none !important;
+  color: white !important;
+  font-size: 16px !important;
+  box-shadow: 0 2px 5px rgba(0, 200, 0, 0.3) !important;
+  transition: all 0.2s ease-in-out !important;
+  
+  &:hover {
+    background-color: #00b000 !important; // Slightly darker green on hover
+  }
+  
+  &.saving {
+    opacity: 0.8;
+    pointer-events: none;
+  }
+  
+  &.saved {
+    background-color: #009e00 !important;
+  }
+  
+  .buttonText {
+    margin-right: 8px;
+  }
+  
+  .checkIcon {
+    font-size: 18px !important;
+    opacity: 0.9;
+  }
+}
+
+// Optional: Add this if you want a subtle animation when saving succeeds
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+.saved .checkIcon {
+  animation: pulse 0.3s ease-in-out;
+}

@@ -1,0 +1,76 @@
+// AnimatedInput.module.scss
+@import "../../scss/fonts";
+.AnimatedInputContainer {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+  border: 0.2px solid black;
+  border-radius: 30px !important;
+  padding: 10px 16px !important;
+  background-color: white !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+  max-width: 345px;
+  height: 75px;
+  // width: 86px;
+  margin: 0 auto;
+  font-family: $font-minecraft;
+  display: flex;
+  align-items: center;
+
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.input {
+  font-family: $font-minecraft !important;
+  color: #136f88 !important;
+  text-shadow: 0 0 5px #136f88, 0 0 10px #136f88, 0 0 15px #136f88,
+    0 0 20px #136f88;
+  font-size: 16px !important;
+  padding: 15px 20px !important;
+  &::before,
+  &::after {
+    display: none !important;
+  }
+  // Add a blinking cursor effect during typing
+  &::after {
+    content: "|";
+    margin-left: 2px;
+    animation: blink 1s step-end infinite;
+  }
+}
+.input input {
+  font-family: $font-minecraft !important;
+  color: #136F88 !important;
+  text-shadow: 
+    0 0 2px #136F88, 
+    0 0 3px rgba(19, 111, 136, 0.8); // Softer, lighter glow
+  font-size: 16px !important;
+  padding: 15px 20px !important;
+  background: transparent !important;
+  border: none !important;
+  outline: none !important;
+}
+
+
+
+.copyButton {
+  color: #136f88 !important;
+  padding: 1px !important;
+  margin-left: -60px;
+  &:hover {
+    background-color: rgba(0, 118, 206, 0.08) !important;
+  }
+}
+
+@keyframes blink {
+  from,
+  to {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}

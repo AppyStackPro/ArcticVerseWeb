@@ -1,0 +1,40 @@
+// ContinueButton.module.scss
+@import '../../scss/fonts';
+.continueButton {
+    background-color: #00c800 !important; // Bright green color
+    border-radius: 12px !important;
+    padding: 8px 16px !important;
+    min-width: 120px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-transform: none !important;
+    box-shadow: 0 4px 8px rgba(0, 200, 0, 0.3) !important;
+    transition: all 0.2s ease-in-out !important;
+    
+    &:hover {
+      background-color: #00b000 !important; // Slightly darker green on hover
+      box-shadow: 0 6px 12px rgba(0, 200, 0, 0.4) !important;
+    }
+    
+    &:disabled {
+      background-color: #83d183 !important; // Lighter green when disabled
+      opacity: 0.7;
+    }
+  
+    .pixelText {
+      // font-family: monospace !important; // For pixel-like font
+      // font-size: 16px !important;
+      // letter-spacing: 0.5px !important;
+      // color: #ffffff !important;
+      // font-weight: 500 !important;
+      font-family: $font-minecraft;
+    }
+  
+    .arrowIcon {
+      color: #ffffff !important;
+      font-size: 18px !important;
+      margin-left: 4px !important;
+      font-family: $font-minecraft;
+    }
+  }

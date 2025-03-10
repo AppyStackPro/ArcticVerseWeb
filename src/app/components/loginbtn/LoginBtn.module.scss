@@ -1,0 +1,49 @@
+// LoginBtn.module.scss
+.loginButton {
+    background-color: #f02718 !important; // Bright red color
+    border-radius: 6px !important; // Rounded corners
+    padding: 5px 20px !important;
+    min-width: 140px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-transform: none !important;
+    box-shadow: 0 4px 8px rgba(240, 39, 24, 0.3) !important;
+    transition: all 0.2s ease-in-out !important;
+    
+    &:hover {
+      background-color: #d01e10 !important; // Darker red on hover
+      box-shadow: 0 6px 12px rgba(240, 39, 24, 0.4) !important;
+    }
+  
+    .pixelText {
+      font-family: monospace !important;
+      font-size: 20px !important;
+      letter-spacing: 1px !important;
+      color: #ffffff !important;
+      font-weight: 500 !important;
+  
+      // Create pixelated effect with text-shadow
+      text-shadow: 
+        1px 0 0 #ffffff,
+        -1px 0 0 transparent,
+        0 1px 0 transparent,
+        0 -1px 0 transparent;
+    }
+  
+    .arrowIcon {
+      color: #ffffff !important;
+      margin-left: 8px !important;
+      font-size: 20px !important;
+    }
+  }
+  
+  // Add a custom pixelated version if you want a more authentic pixel effect
+  @font-face {
+    font-family: 'PixelFont';
+    src: url('/fonts/pixel-font.ttf') format('truetype');
+    /* You would need to add an actual pixel font file to your project */
+    /* Alternatively, you can use a web-safe monospace font as fallback */
+    font-weight: normal;
+    font-style: normal;
+  }
