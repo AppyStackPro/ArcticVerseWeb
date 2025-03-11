@@ -1,6 +1,6 @@
 'use client'
 
-import { account } from '../../lib/appwrite';
+import { account } from '../../firebase/appwrite';
 
 export default function TestAppwrite() {
     const checkSession = async () => {

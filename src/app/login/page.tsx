@@ -5,7 +5,9 @@ import "./login.scss";
 import "../scss/main.scss";
 import Navbar from "../components/Navbar/Navbar";
 import { useEffect, useState } from "react";
-import { account } from "@/lib/appwrite";
+import { auth, firestore } from "../../firebase/firebase";
+import { signInWithEmailAndPassword } from "firebase/auth";
+
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -14,12 +16,24 @@ export default function Login() {
 
   useEffect(() => {
     setError("");
-  }, [email]);
+    const checkAuth = async () => {
+      try {
+        const user = auth.currentUser;
+        if (user) {
+          router.push("/home");
+        }
+      } catch (error) {
+        console.error("Error checking authentication:", error);
+      }
+    };
+    checkAuth();
+  }, [router]);
 
-  const validateEmail = (email) => {
+  const validateEmail = (email: string) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
   };
+
   const handleContinue = async () => {
     setError("");
 
@@ -29,22 +43,10 @@ export default function Login() {
     }
 
     try {
-      const loginRes = await account.createEmailPasswordSession(
-        email,
-        password
-      );
-      console.log("Login successful:", loginRes);
-
-      // Fetch user object after successful login
-      const user = await account.get();
-
-      // Store the user object in localStorage
-      localStorage.setItem("appwrite_session", JSON.stringify(user));
-
+      await signInWithEmailAndPassword(auth, email, password);
       router.push("/home");
-    } catch (error) {
-      console.log("Login failed:", error);
-      setError("Invalid email or password. Please try again.");
+    } catch (err: any) {
+      setError(err.message);
     }
   };
 
@@ -67,7 +69,7 @@ export default function Login() {
           onChange={(e) => setPassword(e.target.value)}
         />
         {error && <p style={{ color: "red", marginTop: "10px" }}>{error}</p>}
-        <ContinueButton onClick={handleContinue} />
+        <ContinueButton onClick={handleContinue} buttonText="Continue" />
       </main>
     </>
   );
