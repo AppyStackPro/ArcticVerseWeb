@@ -5,7 +5,7 @@ import "./login.scss";
 import "../scss/main.scss";
 import Navbar from "../components/Navbar/Navbar";
 import { useEffect, useState } from "react";
-import { auth, firestore } from "../../firebase/firebase";
+import { auth } from "../../firebase/firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
 
 export default function Login() {
@@ -45,8 +45,12 @@ export default function Login() {
     try {
       await signInWithEmailAndPassword(auth, email, password);
       router.push("/home");
-    } catch (err: any) {
-      setError(err.message);
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setError(err.message); // Extracts a readable error message
+      } else {
+        setError("An unknown error occurred.");
+      }
     }
   };
 
@@ -69,7 +73,7 @@ export default function Login() {
           onChange={(e) => setPassword(e.target.value)}
         />
         {error && <p style={{ color: "red", marginTop: "10px" }}>{error}</p>}
-        <ContinueButton onClick={handleContinue} buttonText="Continue" />
+        <ContinueButton onClick={handleContinue} />
       </main>
     </>
   );

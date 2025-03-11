@@ -56,11 +56,20 @@ export default function Register() {
 
       // 3. Redirect to home
       router.push("/home");
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error("Firebase Registration Error:", error);
-      setError('account already exists with this email');
-      if (error.code) {
-        console.error("Firebase Error Code:", error.code);
+      setError("Account already exists with this email.");
+
+      if (error instanceof Error) {
+        console.error("Firebase Error Message:", error.message);
+
+        // Handle Firebase error codes safely
+        const firebaseError = error as { code?: string };
+        if (firebaseError.code) {
+          console.error("Firebase Error Code:", firebaseError.code);
+        }
+      } else {
+        console.error("An unknown error occurred.");
       }
     }
   };
@@ -95,8 +104,9 @@ export default function Register() {
         {error && <p style={{ color: "red", marginTop: "10px" }}>{error}</p>}
         <ContinueButton
           disabled={!isFormValid}
-          onClick={handleRegister}
-          buttonText="Continue"
+          onClick={() =>
+            handleRegister(new Event("click") as unknown as FormEvent)
+          }
         />
       </main>
     </>
